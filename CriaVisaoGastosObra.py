@@ -65,6 +65,9 @@ pagamentos = pagamentos[ pagamentos[ pagamentos.columns[ 0 ] ] != pagamentos.col
 # Filtrando colunas de interesse.
 pagamentos = pagamentos[ [ 'SERVIÇO', 'FORNECEDOR', 'MES_ANO', 'VALOR' ] ]
 
+# Pegando nome do serviço sem códigos.
+pagamentos[ 'SERVIÇO' ] = pagamentos[ 'SERVIÇO' ].apply( lambda x: x.split( '-' )[ 2 ].strip() )
+
 # Pegando indexes que ficaram com notação de reais.
 indexadoresAux = pagamentos[ pagamentos[ 'VALOR' ].str.contains( ',', na = False, regex = True ) ].index
 
@@ -101,7 +104,7 @@ if filtro_servico:
 # Check para ver se eu quero considerar o arquiteto na conta ou não.
 checkGCO = st.sidebar.checkbox( 'Considera GCO?', value = True ) # check box com o default em True.
 if not checkGCO:
-    pagamentos = pagamentos[ pagamentos[ 'SERVIÇO' ] != 'S01 - 16- GCO' ]
+    pagamentos = pagamentos[ pagamentos[ 'SERVIÇO' ] != 'GCO' ]
 
 # Transformando.
 pagamentos[ 'MES' ] = pagamentos[ 'MES' ].apply( lambda x: DictMesesBusca[ x ] )
