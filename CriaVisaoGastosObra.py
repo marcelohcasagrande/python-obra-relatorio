@@ -22,7 +22,7 @@ st.title( 'DASHBOARD DA REFORMA :house_buildings:' )
 st.sidebar.title( 'Filtros' ) # adiciona barra de navegação à esquerda com o título de 'Filtros'.
 
 # Leitura da planilha
-dados = pd.read_excel( 'C:/Users/Pichau/Desktop/Downloads/Planilha.xlsx', sheet_name = 'Pagamentos' )
+dados = pd.read_excel( 'Planilha.xlsx', sheet_name = 'Pagamentos' )
 
 # Os 12 meses do ano para serem buscados.
 vetorMesesBusca = [ 'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO' ]
